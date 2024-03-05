@@ -2,13 +2,10 @@ package roi.live.project;
 
 import java.io.IOException;
 
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import java.time.Duration;
 
 import base.Hooks;
 import pageObjects.Homepage;
