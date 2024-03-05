@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import base.ExtentManager;
 import base.Hooks;
 import pageObjects.Homepage;
 import pageObjects.ShopContentPanel;
@@ -25,14 +26,18 @@ public class AddRemoveItemBasketTest extends Hooks {
     @Test
     public void AddItemTest() throws IOException
     {
+        ExtentManager.log("Starting AddRemoveItemBasketTest...");
+
         Homepage home = new Homepage();
         home.getCookie().click();
         home.getTestStoreLink().click();
         
         ShopHomePage shopHome = new ShopHomePage();
+        ExtentManager.pass("Reached the shop homepage");
         shopHome.getItem1().click();
 
         ShopProductPage shopProduct = new ShopProductPage();
+        ExtentManager.pass("Reached the product page");
         Select option = new Select(shopProduct.getSizeOption());
         option.selectByVisibleText("M");
         shopProduct.getAddToCard().click();
@@ -53,8 +58,13 @@ public class AddRemoveItemBasketTest extends Hooks {
 
         String totalAmount = cart.getTotalAmount().getText();
 
-        System.out.println(totalAmount);
-        Assert.assertEquals(totalAmount, "$26.12");
+        try {
+            Assert.assertEquals(totalAmount, "$26.12");
+            ExtentManager.pass("Total amount is equal");
+        } catch (Exception e) {
+            Assert.fail("Total amount is different!");
+            ExtentManager.fail("Total amount is different!");
+        }
     }
 
 }

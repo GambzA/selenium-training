@@ -10,18 +10,17 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 	private String url;
 	private Properties prop;
+	public static String screenShotPath;
 
 	public BasePage() throws IOException {
 		prop = new Properties();
@@ -39,22 +38,34 @@ public class BasePage {
 		return url;
 	}
 
-	public void takeSnapShot(String name) throws IOException {
+	public static String takeSnapShot(String name) throws IOException {
 		File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
 
-		File destFile = new File(System.getProperty("user.dir") + "\\target\\screenshots\\"
-				+ timestamp() + ".png");
+		String destFile = System.getProperty("user.dir") + "\\target\\screenshots\\" + timestamp() + ".png";
+		screenShotPath = destFile;
 
-		FileUtils.copyFile(srcFile, destFile);
+		try {
+			FileUtils.copyFile(srcFile, new File(destFile));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return name;
+
 	}
 
-	public String timestamp() {
+	public static String timestamp() {
 		return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
 	}
 
-    public void cookieClose() {
-        WebDriverInstance.getDriver().findElement(By.cssSelector("body > div.cookies > div > div > a.close-cookie-warning > span")).click();
-    }
+	public static String getScreenshotPath()
+	{
+		return screenShotPath;
+	}
+
+    // public void cookieClose() {
+    //     WebDriverInstance.getDriver().findElement(By.cssSelector("body > div.cookies > div > div > a.close-cookie-warning > span")).click();
+    // }
 
     public void sleep() {
         sleep(2); // Call the overloaded method with the default value
