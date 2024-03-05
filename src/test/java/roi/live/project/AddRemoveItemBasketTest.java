@@ -30,7 +30,7 @@ public class AddRemoveItemBasketTest extends Hooks {
     {
         Homepage home = new Homepage();
         home.getCookie().click();
-        home.getTestStoreLink().clicks();
+        home.getTestStoreLink().click();
         
         ShopHomePage shopHome = new ShopHomePage();
         shopHome.getItem1().click();
