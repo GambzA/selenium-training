@@ -1,10 +1,14 @@
 package pageObjects;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ShoppingCart {
+import base.BasePage;
+
+public class ShoppingCart extends BasePage {
     public WebDriver driver;
 
     By promoCodeBtn = By.cssSelector(".promo-code-button .collapse-button");
@@ -15,39 +19,46 @@ public class ShoppingCart {
     By removeItemTwoBtn = By.cssSelector(".cart-items .cart-item:nth-of-type(2) .float-xs-left");
     By totalAmount = By.cssSelector(".cart-summary-line.cart-total > .value");
 
-    public ShoppingCart(WebDriver driver)
+    public ShoppingCart() throws IOException
     {
-        this.driver = driver;
+        super();
     }
 
-    public WebElement getPromoCodeBtn()
+    public WebElement getPromoCodeBtn() throws IOException
     {
+        this.driver = getDriver();
         return driver.findElement(promoCodeBtn);
     }
 
-    public WebElement getPromoTextBox()
+    public WebElement getPromoTextBox() throws IOException
     {
+        this.driver = getDriver();
         return driver.findElement(promoTextBox);
     }
 
-    public WebElement getPromoAddBtn()
+    public WebElement getPromoAddBtn() throws IOException
     {
+        this.driver = getDriver();
         return driver.findElement(promoAddBtn);
     }
-    public WebElement getProceedToCheckoutBtn()
+    public WebElement getProceedToCheckoutBtn() throws IOException
     {
+        this.driver = getDriver();
         return driver.findElement(proceedToCheckoutBtn);
     }
-    public WebElement getRemoveItemOneBtn()
+    public WebElement getRemoveItemOneBtn() throws IOException
     {
+        this.driver = getDriver();
         return driver.findElement(removeItemOneBtn);
     }
-    public WebElement getRemoveItemTwoBtn()
+    public WebElement getRemoveItemTwoBtn() throws IOException
     {
+        this.driver = getDriver();
         return driver.findElement(removeItemTwoBtn);
     }
-    public WebElement getTotalAmount()
+    public WebElement getTotalAmount() throws IOException
     {
+        this.driver = getDriver();
         return driver.findElement(totalAmount);
     }
 }
