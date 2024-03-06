@@ -32,9 +32,14 @@ public class ExtentManager extends BasePage
         extentReports = new ExtentReports();
         ExtentSparkReporter spark = new ExtentSparkReporter(
             System.getProperty("user.dir") 
-            + "/report/" 
+            + "/reports/" 
             + extentReportsPrefix_Name(testName) 
             + ".html");
+
+        System.out.println( System.getProperty("user.dir") 
+        + "/report/" 
+        + extentReportsPrefix_Name(testName) 
+        + ".html");
 
         extentReports.attachReporter(spark);
         extentReports.setSystemInfo("Tester", "Roi");
@@ -47,7 +52,7 @@ public class ExtentManager extends BasePage
 
     private static String extentReportsPrefix_Name(String testName) 
     {
-        String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        String date = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
         extentReportPrefix = testName + " " + date;
 
         return extentReportPrefix;

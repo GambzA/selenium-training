@@ -40,18 +40,23 @@ public class AddRemoveItemBasketTest extends Hooks {
         ExtentManager.pass("Reached the product page");
         Select option = new Select(shopProduct.getSizeOption());
         option.selectByVisibleText("M");
+        ExtentManager.pass("Successfully selected M size");
         shopProduct.getAddToCard().click();
 
         ShopContentPanel shopContent = new ShopContentPanel();
+        ExtentManager.pass("Reached shop content panel");
         shopContent.getContinueShoppingBtn().click();
 
         shopProduct.getHomePageLink().click();
+        ExtentManager.pass("Returned back to homepage");
         shopHome.getItem2().click();
+        ExtentManager.pass("Selected Item 2");
         shopProduct.getAddToCard().click();
 
         shopContent.getCheckoutBtn().click();
 
         ShoppingCart cart = new ShoppingCart();
+        ExtentManager.pass("Reached shopping cart");
         cart.getRemoveItemTwoBtn().click();
 
         waitForElementInvisible(cart.getRemoveItemTwoBtn(), 15);

@@ -34,7 +34,7 @@ public class Listeners extends BasePage implements ITestListener{
         }
     }
     
-    public synchronized void onTestFinish(ITestContext context)
+    public synchronized void onFinish(ITestContext context)
     {
         ExtentManager.flushReport();
     }
