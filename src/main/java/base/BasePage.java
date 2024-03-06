@@ -84,4 +84,10 @@ public class BasePage {
 		WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(timer));
 		wait.until(ExpectedConditions.invisibilityOf(element));
 	}
+
+	public static void waitForElementVisible(WebElement element, int timer) throws IOException
+	{
+		WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(timer));
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
 }
