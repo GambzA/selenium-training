@@ -18,8 +18,8 @@
   <name>roi-live-project</name>
   <url>http://www.example.com</url>
   <properties>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
@@ -39,12 +39,36 @@
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>7.9.0</version>
-      <scope>test</scope>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
       <version>2.15.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>5.1.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>5.2.5</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>7.15.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>7.15.0</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
@@ -123,9 +147,9 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
           <configuration>
-            <suiteXMLFiles>
-              <suiteXMLFile>testng.xml</suiteXMLFile>
-            </suiteXMLFiles>
+            <suiteXmlFiles>
+              <suiteXmlFile>testng.xml</suiteXmlFile>
+            </suiteXmlFiles>
           </configuration>
         </plugin>
         <plugin>
@@ -228,16 +252,16 @@
               <goal>test</goal>
             </goals>
             <configuration>
-              <suiteXMLFiles>
-                <suiteXMLFile>testng.xml</suiteXMLFile>
-              </suiteXMLFiles>
+              <suiteXmlFiles>
+                <suiteXmlFile>testng.xml</suiteXmlFile>
+              </suiteXmlFiles>
             </configuration>
           </execution>
         </executions>
         <configuration>
-          <suiteXMLFiles>
-            <suiteXMLFile>testng.xml</suiteXMLFile>
-          </suiteXMLFiles>
+          <suiteXmlFiles>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
         </configuration>
       </plugin>
       <plugin>
